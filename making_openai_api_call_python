@@ -1,0 +1,29 @@
+# How to make open ai api call using python
+
+import openai
+import os
+
+openai.api_key = "INSERT-OPENAI-KEY-HERE"
+
+def call_openai():
+    prompt = """ Write your openai prompt here,
+    you can use multiple lines.
+        """
+
+    completion = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=1950,
+        n=1,
+        temperature=0.4,
+    )
+    response = completion.choices[0].text
+    return response
+    
+# # NOTES ##
+# engine = the type of openai model, choose based on accuracy and costs, look at official openai engines list.
+# max_tokens = maximum tokens include all characters in the prompt + response combined. 
+# Different engines have different token limits, choose max to limit costs as well.
+# n = 1, represents the number of iterations
+# temperature represents the creativity level, keep it lower for more accuracy, higher if you want ai to be more creative with response.
+# # End NOTES ##
